@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
+/**
+ * Represents a customer order in the ORYX system.
+ * Stores customer details, order items, status and financial information.
+ */
 public class Order {
 
     private int orderId;
@@ -85,6 +89,12 @@ public class Order {
         this.deliveryCharge = deliveryCharge;
     }
 
+    /**
+     * Adds a new item to the order.
+     * Duplicate shoe variants are not allowed.
+     *
+     * @param item the order item to add
+     */
     public void addItem(OrderItem item) {
 
         if (item == null) {
@@ -158,7 +168,6 @@ public class Order {
         }
     }
 
-
     public LocalDate getOrderDate() {
         return orderDate;
     }
@@ -183,8 +192,13 @@ public class Order {
         this.returnedDate = savedReturnedDate;
     }
 
-    public double getProfitPerShoe() { return profitPerShoe; }
-    public double getDeliveryCharge() { return deliveryCharge; }
+    public double getProfitPerShoe() {
+        return profitPerShoe;
+    }
+
+    public double getDeliveryCharge() {
+        return deliveryCharge;
+    }
 
     public void restoreFinancialSettings(double savedProfitPerShoe, double savedDeliveryCharge) {
         if (!Double.isFinite(savedProfitPerShoe) || savedProfitPerShoe < 0
